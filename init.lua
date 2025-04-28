@@ -19,11 +19,21 @@ vim.o.rnu = true
 vim.g.mapleader = ' '
 vim.o.expandtab = true
 
+vim.cmd.colorscheme 'solarized'
 
 vim.keymap.set('n', '<leader>pf', ':Telescope find_files<CR>')
 vim.keymap.set('n', '<leader>pg', ':Telescope live_grep<CR>')
+vim.keymap.set('n', '<leader>pb', ':Telescope current_buffer_fuzzy_find<CR>')
 
 local tsconfigs = require('nvim-treesitter.configs')
+
+vim.lsp.config.elixir_lexical = {
+  cmd = {'/Users/hannessteffenhagen/Documents/Weiterbildung/lexical/_build/dev/package/lexical/bin/start_lexical.sh' },
+  filetypes = { 'elixir' },
+  root_markers = { 'mix.exs' }
+}
+
+vim.lsp.enable('elixir_lexical')
 
 tsconfigs.setup {
   ensure_installed = { 'haskell' },
